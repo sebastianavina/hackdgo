@@ -2,9 +2,9 @@ import { Users, Lightbulb, Trophy, Clock } from "lucide-react"
 
 const stats = [
   { icon: Users, value: "200+", label: "Participantes" },
-  { icon: Clock, value: "48", label: "Horas de Hack" },
+  { icon: Clock, value: "24", label: "Horas de Hack" },
   { icon: Lightbulb, value: "50+", label: "Proyectos" },
-  { icon: Trophy, value: "$50K", label: "En Premios" },
+  { icon: Trophy, value: "$", label: "Premios" },
 ]
 
 export function About() {
@@ -22,7 +22,7 @@ export function About() {
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
             HACK DGO es un evento de innovacion y tecnologia que reune a los
-            mejores talentos de Durango y la region. Durante 48 horas intensas,
+            mejores talentos de Durango y la region. Durante 24 horas intensas,
             equipos multidisciplinarios trabajan para desarrollar soluciones
             creativas a problemas reales de nuestra comunidad.
           </p>

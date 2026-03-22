@@ -22,7 +22,7 @@ export function Hero() {
 
   useEffect(() => {
     /* Target: June 15, 2026 */
-    const target = new Date("2026-06-15T09:00:00").getTime()
+    const target = new Date("2026-09-11T11:00:00").getTime()
 
     const update = () => {
       const now = Date.now()
@@ -59,7 +59,7 @@ export function Hero() {
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-5 py-2 backdrop-blur-sm">
           <Calendar className="h-4 w-4 text-secondary" />
           <span className="text-sm font-medium text-primary-foreground">
-            15 de Septiembre, 2026
+            12 de Septiembre del 2026
           </span>
         </div>
 
@@ -108,7 +108,7 @@ export function Hero() {
             variant="outline"
             className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground text-base font-medium"
           >
-            <a href="#sobre">Conoce Mas</a>
+            <a href="/sobre">Conoce Mas</a>
           </Button>
         </div>
       </div>

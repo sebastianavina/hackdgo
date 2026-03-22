@@ -3,44 +3,44 @@ import { Brain, Leaf, Heart, GraduationCap, Building2, Shield } from "lucide-rea
 const tracks = [
   {
     icon: Brain,
-    title: "Inteligencia Artificial",
+    title: "---",
     description:
-      "Desarrolla soluciones impulsadas por IA que automaticen procesos y mejoren la toma de decisiones.",
+      "--- por anunciar ---",
     color: "bg-primary",
   },
   {
     icon: Leaf,
-    title: "Sustentabilidad",
+    title: "---",
     description:
-      "Crea tecnologia que contribuya al cuidado del medio ambiente y el desarrollo sostenible.",
+      "--- por anunciar ---",
     color: "bg-secondary",
   },
   {
     icon: Heart,
-    title: "Salud y Bienestar",
+    title: "---",
     description:
-      "Innova en soluciones digitales que mejoren el acceso y calidad de los servicios de salud.",
+      "--- por anunciar ---",
     color: "bg-accent",
   },
   {
     icon: GraduationCap,
-    title: "Educacion",
+    title: "---",
     description:
-      "Transforma la educacion con herramientas digitales que faciliten el aprendizaje.",
+      "--- por anunciar ---",
     color: "bg-primary",
   },
   {
     icon: Building2,
-    title: "Ciudad Inteligente",
+    title: "---",
     description:
-      "Disena soluciones para hacer de Durango una ciudad mas conectada, eficiente y moderna.",
+      "--- por anunciar ---",
     color: "bg-secondary",
   },
   {
     icon: Shield,
-    title: "Ciberseguridad",
+    title: "---",
     description:
-      "Protege datos y sistemas con soluciones innovadoras de seguridad informatica.",
+      "--- por anunciar ---",
     color: "bg-accent",
   },
 ]

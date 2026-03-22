@@ -5,32 +5,32 @@ const socialLinks = [
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Instagram, href: "#", label: "Instagram" },
   { icon: Github, href: "#", label: "GitHub" },
-  { icon: Mail, href: "mailto:contacto@hackdgo.com", label: "Email" },
+  { icon: Mail, href: "mailto:hackdgo@utd.edu.mx", label: "Email" },
 ]
 
 const footerLinks = [
   {
     title: "Evento",
     links: [
-      { label: "Sobre nosotros", href: "#sobre" },
-      { label: "Tracks", href: "#tracks" },
-      { label: "Agenda", href: "#agenda" },
-      { label: "Equipo", href: "#equipo" },
+      { label: "Sobre nosotros", href: "/sobre" },
+      { label: "Tracks", href: "/tracks" },
+      { label: "Agenda", href: "/agenda" },
+      { label: "Equipo", href: "/equipo" },
     ],
   },
   {
     title: "Recursos",
     links: [
-      { label: "Preguntas Frecuentes", href: "#" },
-      { label: "Reglas del Hackathon", href: "#" },
-      { label: "Codigo de Conducta", href: "#" },
-      { label: "Patrocinadores", href: "#" },
+      { label: "Preguntas Frecuentes", href: "/faq" },
+      { label: "Reglas del Hackathon", href: "/reglas" },
+      { label: "Codigo de Conducta", href: "/conducta" },
+      { label: "Patrocinadores", href: "/patrocinadores" },
     ],
   },
   {
     title: "Contacto",
     links: [
-      { label: "contacto@hackdgo.com", href: "mailto:contacto@hackdgo.com" },
+      { label: "hackdgo@utd.edu.mx", href: "mailto:hackdgo@utd.edu.mx" },
       { label: "Durango, Mexico", href: "#" },
     ],
   },

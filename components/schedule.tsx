@@ -1,7 +1,7 @@
 const days = [
   {
     day: "Dia 1",
-    date: "Viernes 15 de Junio",
+    date: "Sabado 12 de Septiembre",
     events: [
       { time: "08:00", title: "Registro y Check-in", type: "registro" },
       { time: "09:00", title: "Ceremonia de Apertura", type: "ceremonia" },
@@ -14,7 +14,7 @@ const days = [
   },
   {
     day: "Dia 2",
-    date: "Sabado 16 de Junio",
+    date: "Domingo 13 de Junio",
     events: [
       { time: "08:00", title: "Desayuno", type: "comida" },
       { time: "09:00", title: "Mentorias 1-a-1", type: "actividad" },
@@ -24,19 +24,7 @@ const days = [
       { time: "20:00", title: "Cena", type: "comida" },
       { time: "23:59", title: "Hacking toda la noche", type: "hack" },
     ],
-  },
-  {
-    day: "Dia 3",
-    date: "Domingo 17 de Junio",
-    events: [
-      { time: "08:00", title: "Desayuno", type: "comida" },
-      { time: "10:00", title: "Deadline de Proyectos", type: "hack" },
-      { time: "11:00", title: "Presentaciones / Demos", type: "ceremonia" },
-      { time: "14:00", title: "Almuerzo", type: "comida" },
-      { time: "15:00", title: "Deliberacion del Jurado", type: "ceremonia" },
-      { time: "16:00", title: "Premiacion y Clausura", type: "ceremonia" },
-    ],
-  },
+  }
 ]
 
 function getTypeColor(type: string) {
@@ -72,7 +60,7 @@ export function Schedule() {
         </div>
 
         {/* Schedule Grid */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 lg:grid-cols-2">
           {days.map((day) => (
             <div
               key={day.day}
