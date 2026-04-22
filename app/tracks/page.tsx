@@ -4,14 +4,14 @@ import { Footer } from "@/components/footer"
 
 export const metadata = {
   title: "Tracks | HACK DGO",
-  description: "Explora las categorias y retos del hackathon HACK DGO.",
+  description: "Explore the challenge categories and tracks for HACK DGO 2026.",
 }
 
 export default function TracksPage() {
   return (
     <main>
       <Navbar />
-      <Tracks />
+      <Tracks showBackButton />
       <Footer />
     </main>
   )

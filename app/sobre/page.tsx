@@ -3,15 +3,15 @@ import { About } from "@/components/about"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "Sobre Nosotros | HACK DGO",
-  description: "Conoce mas sobre HACK DGO, el hackathon mas grande de Durango.",
+  title: "About | HACK DGO",
+  description: "Learn more about HACK DGO, Durango's biggest hackathon.",
 }
 
 export default function SobrePage() {
   return (
     <main>
       <Navbar />
-      <About />
+      <About showBackButton />
       <Footer />
     </main>
   )

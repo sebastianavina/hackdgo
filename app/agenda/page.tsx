@@ -3,15 +3,15 @@ import { Schedule } from "@/components/schedule"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "Agenda | HACK DGO",
-  description: "Consulta el programa completo del hackathon HACK DGO.",
+  title: "Schedule | HACK DGO",
+  description: "Full program and schedule for HACK DGO 2026.",
 }
 
 export default function AgendaPage() {
   return (
     <main>
       <Navbar />
-      <Schedule />
+      <Schedule showBackButton />
       <Footer />
     </main>
   )

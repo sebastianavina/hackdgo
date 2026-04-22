@@ -3,15 +3,15 @@ import { Team } from "@/components/team"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "Equipo | HACK DGO",
-  description: "Conoce al equipo organizador de HACK DGO.",
+  title: "Team | HACK DGO",
+  description: "Meet the organizing team behind HACK DGO.",
 }
 
 export default function EquipoPage() {
   return (
     <main>
       <Navbar />
-      <Team />
+      <Team showBackButton />
       <Footer />
     </main>
   )

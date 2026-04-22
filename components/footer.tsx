@@ -1,5 +1,6 @@
-import Image from "next/image"
+"use client"
 import { Github, Instagram, Twitter, Mail, MapPin } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
 
 const socialLinks = [
   { icon: Twitter, href: "#", label: "Twitter" },
@@ -8,68 +9,86 @@ const socialLinks = [
   { icon: Mail, href: "mailto:hackdgo@utd.edu.mx", label: "Email" },
 ]
 
-const footerLinks = [
-  {
-    title: "Evento",
-    links: [
-      { label: "Sobre nosotros", href: "/sobre" },
-      { label: "Tracks", href: "/tracks" },
-      { label: "Agenda", href: "/agenda" },
-      { label: "Equipo", href: "/equipo" },
-    ],
-  },
-  {
-    title: "Recursos",
-    links: [
-      { label: "Preguntas Frecuentes", href: "/faq" },
-      { label: "Reglas del Hackathon", href: "/reglas" },
-      { label: "Codigo de Conducta", href: "/conducta" },
-      { label: "Patrocinadores", href: "/patrocinadores" },
-    ],
-  },
-  {
-    title: "Contacto",
-    links: [
-      { label: "hackdgo@utd.edu.mx", href: "mailto:hackdgo@utd.edu.mx" },
-      { label: "Durango, Mexico", href: "#" },
-    ],
-  },
-]
-
 export function Footer() {
+  const { lang } = useLanguage()
+
+  const footerLinks =
+    lang === "en"
+      ? [
+          {
+            title: "Event",
+            links: [
+              { label: "About", href: "/sobre" },
+              { label: "Tracks", href: "/tracks" },
+              { label: "Schedule", href: "/agenda" },
+              { label: "Team", href: "/equipo" },
+            ],
+          },
+          {
+            title: "Resources",
+            links: [
+              { label: "FAQ", href: "/faq" },
+              { label: "Rules", href: "/reglas" },
+              { label: "Code of Conduct", href: "/conducta" },
+              { label: "Sponsors", href: "/patrocinadores" },
+            ],
+          },
+          {
+            title: "Contact",
+            links: [
+              { label: "hackdgo@utd.edu.mx", href: "mailto:hackdgo@utd.edu.mx" },
+              { label: "Durango, México", href: "#" },
+            ],
+          },
+        ]
+      : [
+          {
+            title: "Evento",
+            links: [
+              { label: "Sobre Nosotros", href: "/sobre" },
+              { label: "Tracks", href: "/tracks" },
+              { label: "Agenda", href: "/agenda" },
+              { label: "Equipo", href: "/equipo" },
+            ],
+          },
+          {
+            title: "Recursos",
+            links: [
+              { label: "Preguntas Frecuentes", href: "/faq" },
+              { label: "Reglas del Hackathon", href: "/reglas" },
+              { label: "Código de Conducta", href: "/conducta" },
+              { label: "Patrocinadores", href: "/patrocinadores" },
+            ],
+          },
+          {
+            title: "Contacto",
+            links: [
+              { label: "hackdgo@utd.edu.mx", href: "mailto:hackdgo@utd.edu.mx" },
+              { label: "Durango, México", href: "#" },
+            ],
+          },
+        ]
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Image
-              src="/images/logo.png"
-              alt="HACK DGO Logo"
-              width={140}
-              height={50}
-              className="h-10 w-auto"
-            />
+            <p className="font-mono text-2xl font-bold text-primary">
+              HACK <span className="text-secondary">DGO</span>
+            </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              El hackathon mas grande de Durango. Innovacion, tecnologia y
-              comunidad en un solo evento.
+              {lang === "en"
+                ? "Durango's biggest hackathon. Innovation, technology, and community in one event."
+                : "El hackathon más grande de Durango. Innovación, tecnología y comunidad en un solo evento."}
             </p>
             <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin className="h-4 w-4 text-primary" />
-              <span>Durango, Mexico</span>
+              <span>Durango, México</span>
             </div>
-            {/* Social Links */}
             <div className="mt-6 flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-4 w-4" />
-                </a>
-              ))}
+             
             </div>
           </div>
 
@@ -80,16 +99,7 @@ export function Footer() {
                 {group.title}
               </h4>
               <ul className="mt-4 space-y-3">
-                {group.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                
               </ul>
             </div>
           ))}
@@ -98,7 +108,8 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-border pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} HACK DGO. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} HACK DGO.{" "}
+            {lang === "en" ? "All rights reserved." : "Todos los derechos reservados."}
           </p>
         </div>
       </div>

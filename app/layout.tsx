@@ -1,30 +1,29 @@
-import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata, Viewport } from "next"
+import { Inter, Space_Grotesk } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import { Providers } from "./providers"
+import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
 
 export const metadata: Metadata = {
-  title: 'HACK DGO | Hackathon Durango 2026',
-  description: 'El hackathon mas grande de Durango. Innova, colabora y construye soluciones tecnologicas que transformen tu comunidad.',
-  generator: 'Next.js',
-  keywords: ['hackathon', 'durango', 'tecnologia', 'innovacion', 'hack dgo', 'programacion'],
-  //icons: {
-   // icon: '/images/logo.png',
-   // apple: '/images/logo.png',
- // },
+  title: "HACK DGO | Hackathon Durango 2026",
+  description:
+    "Durango's biggest hackathon. Innovate, collaborate, and build technology solutions that transform your community.",
+  generator: "Next.js",
+  keywords: ["hackathon", "durango", "technology", "innovation", "hack dgo", "programming"],
   openGraph: {
-    title: 'HACK DGO | Hackathon Durango 2026',
-    description: 'El hackathon mas grande de Durango. Innova, colabora y construye soluciones tecnologicas.',
-    type: 'website',
+    title: "HACK DGO | Hackathon Durango 2026",
+    description:
+      "Durango's biggest hackathon. Innovate, collaborate, and build technology solutions.",
+    type: "website",
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0A7764',
-  width: 'device-width',
+  themeColor: "#0A7764",
+  width: "device-width",
   initialScale: 1,
 }
 
@@ -34,9 +33,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
-        {children}
+        <Providers>{children}</Providers>
         <Analytics />
       </body>
     </html>
