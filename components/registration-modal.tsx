@@ -23,6 +23,8 @@ const INITIAL: FormFields = { name: "", email: "", org: "", role: "", hasTeam: "
 export function RegistrationModal({ children }: { children: ReactNode }) {
   const { lang } = useLanguage()
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null) // 👈 NUEVO
   const [form,    setForm]    = useState<FormFields>(INITIAL)
   const [errors,  setErrors]  = useState<Errors>({})
   const [touched, setTouched] = useState<Touched>({})
@@ -126,6 +128,8 @@ export function RegistrationModal({ children }: { children: ReactNode }) {
     if (touched[k]) {
       setErrors((prev) => ({ ...prev, [k]: validateField(k, value) }))
     }
+    // Limpiar error del servidor cuando el usuario empieza a escribir
+    if (submitError) setSubmitError(null)
   }
 
   function handleBlur(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
@@ -134,21 +138,50 @@ export function RegistrationModal({ children }: { children: ReactNode }) {
     setErrors((prev) => ({ ...prev, [k]: validateField(k, form[k]) }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  /* ── NUEVA handleSubmit con manejo de errores visual ── */
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+
     if (!validateAll()) return
-    const subject = `Pre-Registration HACK DGO 2026: ${form.name}`
-    const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      `Organization: ${form.org}`,
-      `Role: ${form.role}`,
-      `Team status: ${form.hasTeam}`,
-    ].join("\n")
-    window.open(
-      `mailto:hackdgo@utd.edu.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    )
-    setSubmitted(true)
+
+    setSubmitError(null) // limpiar error anterior
+
+    try {
+      setLoading(true)
+
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: form.name,
+          email: form.email,
+          school: form.org,
+          role: form.role,
+          hasTeam: form.hasTeam,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        // Mostrar mensaje del backend (p.ej. "Este correo ya está registrado")
+        setSubmitError(data.message || "Error al registrar")
+        return
+      }
+
+      // Éxito
+      setSubmitted(true)
+      setForm(INITIAL)
+      setErrors({})
+      setTouched({})
+    } catch (error) {
+      console.log(error)
+      setSubmitError("Error al conectar con el servidor")
+    } finally {
+      setLoading(false)
+    }
   }
 
   function handleOpenChange(isOpen: boolean) {
@@ -157,6 +190,7 @@ export function RegistrationModal({ children }: { children: ReactNode }) {
       setForm(INITIAL)
       setErrors({})
       setTouched({})
+      setSubmitError(null) // resetear error al cerrar
     }
   }
 
@@ -323,7 +357,6 @@ export function RegistrationModal({ children }: { children: ReactNode }) {
                           <option key={r} value={r}>{r}</option>
                         ))}
                       </select>
-                      {/* Chevron icon */}
                       <svg
                         className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
@@ -364,13 +397,22 @@ export function RegistrationModal({ children }: { children: ReactNode }) {
                   </div>
                 </div>
 
+                {/* 👇 MENSAJE DE ERROR BONITO (desde el servidor) */}
+                {submitError && (
+                  <div className="rounded-lg bg-destructive/10 border border-destructive/30 p-3 flex items-start gap-2 text-sm text-destructive">
+                    <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   size="lg"
+                  disabled={loading}
                   className="w-full font-semibold text-base h-12 mt-1"
                 >
-                  {t.submit}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  {loading ? "Registrando..." : t.submit}
+                  {!loading && <ArrowRight className="ml-2 h-4 w-4" />}
                 </Button>
 
                 <p className="text-center text-xs text-muted-foreground">
