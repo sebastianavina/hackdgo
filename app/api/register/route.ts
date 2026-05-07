@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { connectMongo } from "@/lib/mongodb"
 import Registration from "@/models/Registration"
 
+
 export async function POST(req: Request) {
   try {
     await connectMongo()
